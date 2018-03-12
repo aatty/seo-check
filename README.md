@@ -37,8 +37,8 @@ In <head> Tag. A meta tag with name=keywords attribute not exist.
 
 1. Detect if any <img /> tag without alt attribute.
 2. Detect if any <a /> tag without rel attribute.
-3. Detect if there’re more than 15 <strong> tag in HTML
-4. Detect if a HTML have more than one H1 tag.
+3. Detect if there’re more than 15 \<strong> tag in HTML
+4. Detect if a HTML have more than one \<H1> tag.
 5. The <head> tag
    - Detect if header doesn’t have <title> tag
    - Detect if header doesn’t have <meta name=“descriptions” ... /> tag
