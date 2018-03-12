@@ -1,6 +1,6 @@
 {
   "name": "seo-check",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A HTML parser to scan seo rules",
   "main": "./src/parse.js",
   "directories": {
