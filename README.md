@@ -41,7 +41,7 @@ In <head> Tag. A meta tag with name=keywords attribute not exist.
 4. Detect if a HTML have more than one \<H1> tag.
 5. The <head> tag
    - Detect if header doesn’t have <title> tag
-   - Detect if header doesn’t have <meta name=“descriptions” ... /> tag
+   - Detect if header doesn’t have <meta name=“description” ... /> tag
    - Detect if header doesn’t have <meta name=“keywords” ... /> tag
 
 ## Input/Output

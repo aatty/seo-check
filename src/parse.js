@@ -31,7 +31,7 @@ const ruleCollection = {
 			"meta": {
 				"method": "hasAttr",
 				"value": [
-					"name=descriptions",
+					"name=description",
 					"name=keywords",
 				]
 			}
