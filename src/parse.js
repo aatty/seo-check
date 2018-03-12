@@ -70,8 +70,6 @@ const Parse = {
 		}
 	},
 	run: function() {
-		//if(this.enable.length != 0) this.setEnable(this.enable);
-		//if(this.disable.length != 0) this.setDisable(this.disable);
 		
 		if(this.inputType == 'file'){
       if (!fs.existsSync(this.inputFile)) {

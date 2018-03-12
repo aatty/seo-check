@@ -16,8 +16,8 @@ try{
 	/**
 	 * Set input type is necessary. The input can be file(with input file path) or stream.
 	 */
-	//Parse.input('stream');
 	Parse.input('file','./example.html');
+	//or you can output stream Parse.input('stream');
 
 	/**
 	* Set output type . The default output is console.
