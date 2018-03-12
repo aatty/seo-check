@@ -33,16 +33,6 @@ In <head> Tag. A meta tag with name=descriptions attribute exist
 In <head> Tag. A meta tag with name=keywords attribute not exist.
 ```
 
-### Default Rules
-
-1. Detect if any <img /> tag without alt attribute.
-2. Detect if any <a /> tag without rel attribute.
-3. Detect if there’re more than 15 \<strong> tag in HTML
-4. Detect if a HTML have more than one \<H1> tag.
-5. The <head> tag
-   - Detect if header doesn’t have <title> tag
-   - Detect if header doesn’t have <meta name=“description” ... /> tag
-   - Detect if header doesn’t have <meta name=“keywords” ... /> tag
 
 ## Input/Output
 You can also set the input and output type.
@@ -66,17 +56,83 @@ try{
 }
 ```
 
+### Default Rules
+
+1. Detect if any <img /> tag without alt attribute.
+2. Detect if any <a /> tag without rel attribute.
+3. Detect if there’re more than 15 \<strong> tag in HTML
+4. Detect if a HTML have more than one \<H1> tag.
+5. The <head> tag
+   - Detect if header doesn’t have \<title> tag
+   - Detect if header doesn’t have \<meta name=“description” ... /> tag
+   - Detect if header doesn’t have \<meta name=“keywords” ... /> tag
+   
 ## Set custom rules
-You can also set custom rules or overwrite the default rule easily
+You can also set custom rules or overwrite the default rule easily.
+#### The package provide these mothod:
+##### more-than
+Detect if a HTML have more than two specify tag.
+```
+Parse.tag('h2').setRule({'more-than': 2});
+// defect if html has more than 2 h2 tag
+```
+output:
+```
+The HTML has more than 2 <h2> tag
+```
+#### less-than
+Detect if a HTML have more less two specify tag.
+```
+Parse.tag('img').setRule({'less-than': 3});
+// defect if html has less than 3 <img> tag
+``` 
+output:
+```
+The HTML has less than '3' <img> tag.
+```
+#### withoutAttr
+Detect if any specify tag without specify attribute.
+```
+Parse.tag('a').setRule({'withoutAttr': ['rel']});
+//Detect if any <a /> tag without rel attribute
+```
+output:
+```
+There are 1 <a> tag without 'rel' attribute.
+```
+you can alse check multi attributes and values.
+```
+Parse.tag('meta').setRule({'withoutAttr': ["name=description","name=keywords"]});
+```
+output:
+```
+There are 1 <meta> tag without 'name=description' .
+There are 2 <meta> tag without 'name=keywords' .
+```
+
+
+
+#### hasAttr
+Detect if any specify tag has specify attribute.
+```
+Parse.tag('meta').setRule({'hasAttr': ["name","keywords"]});
+```
+output
+```
+A meta tag with name attribute exist.
+A meta tag with keywords attribute not exist.
+```
+#### Overall
 ```
 const Parse = require('seo-check');  
 try{
   // set new rule to check if a HTML have more than two <H2> tag.
-  Parse.tag('h2').setRule({'more-han': 2});
+  Parse.tag('h2').setRule({'more-than': 2});
   
   // overwrite default rule to check if a HTML have more than three <H2> tag.
   Parse.tag('h1').setRule({'more-han': 3});
   Parse.input('file','./example.html');
+  Parse.input('file','./output.txt');
   
   // excute
   Parse.run();

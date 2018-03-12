@@ -4,8 +4,7 @@ try{
   /**
 	* You can optonal set the customized rules as needed.
 	*/
-	Parse.tag('h2').setRule({'more-han': 2});
-	Parse.tag('meta').setRule({'hasAttr': ["name","name=description"]});
+	Parse.tag('h2').setRule({'more-than': 2});
 
 	/** 
 	* You can optonal enable which html tag will be check as needed 

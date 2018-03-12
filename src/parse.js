@@ -211,9 +211,9 @@ const Parse = {
 				}
 			}else{
 				if(exist){
-					this.outputCollection.push(`${rootString}A ${tag} tag with ${attrName}=${attrValue} attribute exist`);
+					this.outputCollection.push(`${rootString}A ${tag} tag with '${attrName}=${attrValue}' attribute exist`);
 				}else{
-					this.outputCollection.push(`${rootString}A ${tag} tag with ${attrName}=${attrValue} attribute not exist. `);
+					this.outputCollection.push(`${rootString}A ${tag} tag with '${attrName}=${attrValue}' attribute not exist. `);
 				}
 			}
 		
@@ -234,7 +234,7 @@ const Parse = {
 
 			this.$(tag).each((i, elem) => {
 				let value = this.$(elem).attr(attrName);
-				if(typeof value == "undefined"){
+				if(typeof value == "undefined" && attrValue == null){
 				  countAttr = countAttr + 1;
 				}
 				if(attrValue != null && (value != attrValue) ){
@@ -246,8 +246,8 @@ const Parse = {
 			if(countAttr > 0){
 			  this.outputCollection.push(`${rootString}There are ${countAttr} <${tag}> tag without '${attrName}' attribute.`);
 			}
-			if(countValue){
-				this.outputCollection.push(`${rootString}There are ${countValue} <${tag}> tag with no value "${attrValue}" .`);	
+			if(countValue > 0 ){
+				this.outputCollection.push(`${rootString}There are ${countValue} <${tag}> tag without '${attrName}=${attrValue}' .`);	
 			}
 
 		});
