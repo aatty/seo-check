@@ -13,7 +13,7 @@ npm install cxtt/seo-check
 ```
 
 ### Basic usage
-The following example show easy way to check html seo.
+The example.html is located in the repository example/example.html.     
 For example, create a test.js file:
 ```
 const Parse = require('seo-check');  
