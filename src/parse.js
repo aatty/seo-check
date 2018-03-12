@@ -40,23 +40,26 @@ const ruleCollection = {
 };
 
 const Parse = {
-	enable: [],
-	disable: [],
 	inputType: null,
 	inputFile: null,
 	outputType: null,
 	destination: null,
 	outputCollection: [],
 	input: function(){
-		const [inputType, inputFile] = [...arguments];
+    const [inputType, inputFile] = [...arguments];
+    if(inputType != 'file' && inputType != 'stream') throw 'The input type is not defined.';
+    
 		this.inputType = inputType;
 		if(inputType == 'file'){
+      if(inputFile == null) throw 'file path is necessary when use file input.';
 			this.inputFile = inputFile;
 		}
 	},
 	output: function(){
 		const [outputType, destination] = [...arguments];
 
+    if(outputType != 'stream' && outputType != 'file' && outputType != 'console')
+      throw 'The output tpye you send is not defined.';
 		if(outputType == 'file'){
 			this.outputType = 'file';
 			this.destination = destination;
@@ -67,16 +70,13 @@ const Parse = {
 		}
 	},
 	run: function() {
-		//const [content, enable, disable] = [...arguments];
-		if(this.enable.length != 0){
-			this.setEnable(this.enable);
-		}
-		if(this.disable.length != 0){
-			this.setDisable(this.disable);
-		}
-
+		//if(this.enable.length != 0) this.setEnable(this.enable);
+		//if(this.disable.length != 0) this.setDisable(this.disable);
 		
 		if(this.inputType == 'file'){
+      if (!fs.existsSync(this.inputFile)) {
+        throw 'File Path not exists.';
+      }
       fs.readFile(this.inputFile, (err, content) => {
 				const $ = cheerio.load(content);
 				this.$ = $;
@@ -140,6 +140,7 @@ const Parse = {
 		}); 
 	},
 	tag: function(tag){
+    if(typeof tag != 'string') throw 'Tag format is illegal, it must be astring';
 		ruleCollection.tag = {};
 		this.tmp = tag;
 	  return this;
@@ -155,6 +156,7 @@ const Parse = {
 		return this;
 	},
 	setEnable: function(enable) {
+    //console.log(typeof enable);
 		const tags = Object.keys(ruleCollection);
 		let removeProperties = [];
 		tags.forEach((tag) => {
