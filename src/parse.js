@@ -154,7 +154,6 @@ const Parse = {
 		return this;
 	},
 	setEnable: function(enable) {
-    //console.log(typeof enable);
 		const tags = Object.keys(ruleCollection);
 		let removeProperties = [];
 		tags.forEach((tag) => {
