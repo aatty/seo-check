@@ -1,0 +1,29 @@
+{
+  "name": "seo-check",
+  "version": "1.0.0",
+  "description": "A HTML parser to scan seo rules",
+  "main": "./src/parse.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aatty/seo-check.git"
+  },
+  "keywords": [
+    "html",
+    "seo"
+  ],
+  "author": "Charlie Hsieh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aatty/seo-check/issues"
+  },
+  "homepage": "https://github.com/aatty/seo-check#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2"
+  }
+}
